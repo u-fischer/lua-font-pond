@@ -1,0 +1,33 @@
+% !Mode:: "TeX:UTF-8:Main"
+% Date: 11.05.2018
+% Description:
+% dumps the table of a font into fontdump.lua
+% useful to inspect a font
+% can give quite large files!
+% Use: insert the font or file name in the command below.
+%      run luatex dump-font
+% Source: documentation of luaotfload
+
+\input regression-test.tex\relax
+
+\input luaotfload.sty
+\START
+\directlua
+ {
+   local dumpfile = "fontdump.lua"
+   local dump_font =
+    function (tfmdata)
+     local data = table.serialize(tfmdata)
+     io.savedata(dumpfile, data)
+    end
+
+  luatexbase.add_to_callback(
+     "luaotfload.patch_font",
+     dump_font,
+     "my_private_callbacks.dump_font"
+    )
+ }
+
+\font \dumpme  = {name:texgyrepagella}
+\bye
+\END 
