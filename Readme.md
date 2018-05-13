@@ -19,7 +19,7 @@ Currently the following folders for the various formats exists
 - context
 - plain: plaintex examples that load luaotfload.sty
 - generic: for everything that doesn't fit in the folders above
-- ressources:  for code that is perhaps useful across formats
+- resources:  for code that is perhaps useful across formats
 - testfiles/testfiles-plain: these folders contain a few testfiles for the l3build system.
 
 Every example is accompaigned by the resulting pdf. 

@@ -5,7 +5,7 @@ stdengine    = "luatex"
 checkengines = {"luatex"}
 checkconfigs = {"build","config-plain"}
 
-testsuppdir =  "./ressources" -- test files should also use ressources
+testsuppdir =  "./resources" -- test files should also use resources
 
 checkruns = 3
 
