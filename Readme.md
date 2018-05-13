@@ -13,14 +13,14 @@ Contribuations are welcome.
 
 ##  Structure
 
-Currently the following folders for the various format exists
+Currently the following folders for the various formats exists
 
 - latex
 - context
 - plain: plaintex examples that load luaotfload.sty
-- generic: for everything that doesn't fit in the folder above
+- generic: for everything that doesn't fit in the folders above
 - ressources:  for code that is perhaps useful across formats
-- testfiles/testfiles-plain: this folders contains a few testfiles for the l3build system.
+- testfiles/testfiles-plain: these folders contain a few testfiles for the l3build system.
 
 Every example is accompaigned by the resulting pdf. 
 
