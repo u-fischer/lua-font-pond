@@ -1,0 +1,10 @@
+language: generic
+
+sudo: required
+services: docker
+
+script: |
+  docker run \
+  -v ${TRAVIS_BUILD_DIR}:/travis -w /travis \
+  -it texlive/texlive sh -c \
+  "tlmgr install luatex l3build; texlua build.lua check --quiet --halt-on-error"
