@@ -1,0 +1,16 @@
+% !Mode:: "TeX:UTF-8:Main"
+% Date: 14.05.2018
+% Description: demonstrates how to use combo fonts
+% Ressources:
+% Links: https://tex.stackexchange.com/a/314401
+\input luaotfload.sty
+
+\font\regular="file:lmroman10-regular.otf" at 10pt
+\font\large="file:lmroman10-regular.otf" at 20pt
+
+\font\mixedfont="combo: 1 -> \fontid\regular; 2 -> \fontid\large, 0x65;"
+\mixedfont
+
+Test
+
+\bye
