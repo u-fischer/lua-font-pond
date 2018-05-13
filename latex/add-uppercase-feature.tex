@@ -4,20 +4,20 @@
 % open type feature
 % Requires: external support/font-pont-lower-uppercase.lua, which gives a table of
 % lowercase - uppercase pairs.
-% Source
+% Source/Links:
 % https://tex.stackexchange.com/questions/370799/fill-a-lua-table-with-lowercase-uppercase-pairs
 % open questions: can copy&paste give lowercase again?
 \documentclass{article}
 \directlua
 {
-  local lowercases = require "../support/font-pont-lower-uppercase"
-  lowercases["ß"] = {"S","S"}
+  local lowertouppercase = require "../ressources/fontpond-lower-uppercase"
+  lowertouppercase["ß"] = {"S","S"}
 
   fonts.handlers.otf.addfeature
    {
      name = "vircase",
      type = "multiple",
-     data = lowercases
+     data = lowertouppercase
    }
 }
 

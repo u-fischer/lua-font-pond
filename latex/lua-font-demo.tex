@@ -1,0 +1,29 @@
+% !Mode:: "TeX:UTF-8:Main"
+% Date: 13.05.2018
+% Description: demonstrates the use of a font defined in a lua file
+% the vowels are replaced by rules or lines.
+% The basefont can be set with the key original
+% Requires: latex-font-demo-rule.lua, which defines a font
+% Source/Links:
+% fonts-mkiv.pdf
+% https://www.mail-archive.com/ntg-context@ntg.nl/msg87811.html
+% Remarks:
+% the original lua code tried to add an /Actualtext around 
+% the rule to get correct copy&paste. As this doesn't work with
+% rules it was removed here. 
+% Open questions:
+% how to avoid that luaotfload always writes
+% luaotfload | db : Reload initiated (formats: otf,ttf,ttc); reason: "File not found: 
+% latex-font-demo-rule.".
+
+\documentclass{article}
+\begin{document}
+\font\testluafont={file:latex-font-demo-rule.lua:mode=node;+liga;original=arial.ttf}
+{\testluafont So when we use it we get text ffi}
+
+\font\testluafont={file:latex-font-demo-rule.lua:mode=node;+liga;option=line} at 30pt
+{\testluafont So when we use it we get text ffi}
+
+
+\end{document}
+

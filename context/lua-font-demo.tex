@@ -1,0 +1,35 @@
+% !Mode:: "TeX:UTF-8:Main"
+% Date: 13.05.2018
+% Description: demonstrates the use of a font defined in a lua file
+% Requires: context-font-demo-rule.lua, which defines a font
+% Source/Links:
+% fonts-mkiv.pdf
+% open questions:
+% the original lua uses pdf:direct which gives wrong nesting
+% pdf:page is better but there are still BT/ET pairs too much
+% probably from the context backends code
+% copy & paste doesn't work as expected: /Actualtext doesn't work around simple rules,
+% see e.g. https://tex.stackexchange.com/a/397609/2388
+
+% use to uncompress the pdf:
+\pdfvariable compresslevel =0
+
+\definefontfeature
+  [myrulefont]
+  [default]
+  [original=file:texgyrepagella-regular.otf,
+   option=line]
+\definefont
+  [MyRuleFont]
+  [file:context-font-demo-rule.lua*myrulefont]
+
+\starttext
+{\MyRuleFont So when we use it we get text }
+
+%low-level definition
+%at least one feature (e.g. mode=node) is needed
+
+\font\testluafont={file:context-font-demo-rule.lua:mode=node;+liga;original=arial.ttf}
+{\testluafont So when we use it we get text ffi}
+
+\stoptext

@@ -5,6 +5,8 @@ stdengine    = "luatex"
 checkengines = {"luatex"}
 checkconfigs = {"build","config-plain"}
 
+testsuppdir =  "./ressources" -- test files should also use ressources
+
 checkruns = 3
 
 kpse.set_program_name ("kpsewhich")

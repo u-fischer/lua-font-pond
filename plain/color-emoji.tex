@@ -1,0 +1,28 @@
+% !Mode:: "TeX:UTF-8:Main"
+% Date: 13.05.2018
+% Description: demonstrates how use and to color emoji fonts
+% Ressources: the used emoji fonts
+% Links: https://tex.stackexchange.com/a/387069/2388
+
+\input luaotfload.sty
+
+\directlua{fonts.handlers.otf.registerpalette("demo", {
+        { g = 0 },
+        { g =0.5 },
+        { r = 1  },
+        { r = 1, b= 1}, %value used by the emoji
+    }
+    )}
+
+
+
+%Default colors:
+\font\Emoji={file:seguiemj.ttf:mode=node;colr=yes;}
+     \Emoji \char"2661 \char"1F34D \char"1F986
+
+% own colors:
+\font\Emoji={file:seguiemj.ttf:mode=node;colr=demo;}
+     \Emoji \char"2661 \char"1F34D \char"1F986
+
+
+\bye

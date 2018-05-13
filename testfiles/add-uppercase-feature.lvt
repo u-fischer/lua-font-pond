@@ -12,14 +12,14 @@
 \documentclass{article}
 \directlua
 {
-  local lowercases = require "../../support/font-pont-lower-uppercase"
-  lowercases["ß"] = {"S","S"}
+  local lowertouppercase = require "fontpond-lower-uppercase"
+  lowertouppercase["ß"] = {"S","S"}
 
   fonts.handlers.otf.addfeature
    {
      name = "vircase",
      type = "multiple",
-     data = lowercases
+     data = lowertouppercase
    }
 }
 

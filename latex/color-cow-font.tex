@@ -1,0 +1,35 @@
+% !Mode:: "TeX:UTF-8:Main"
+% Date: 13.05.2018
+% Description: demonstrates how to color the cow font
+% Ressources: koeielettersot.ttf (e.g. from a context minimals)
+% Links: https://tex.stackexchange.com/a/387069/2388
+
+\documentclass{article}
+
+\directlua{fonts.handlers.otf.registerpalette("demo1", 
+     {
+        { g = 0 },
+        { g = 0.5, b=0, r=1 }, %body
+        { r = 1  },
+        { r = 0, b= 1, g= 0},  %spots
+     }
+    )}
+
+
+\directlua{fonts.handlers.otf.registerpalette("demo2",
+     {
+        { g = 0 },
+        { g = 0.5, b=0.3, r=0.2 }, %body
+        { r = 1  },
+        { r = 0.5, b= 0.5, g= 0},  %spots
+     }
+    )}
+\begin{document}
+
+\font\cow={file:koeielettersot.ttf:mode=node;colr=demo1;} at 30pt
+    \cow ABC
+
+\font\cow={file:koeielettersot.ttf:mode=node;colr=demo2;} at 30pt
+    \cow DEF
+
+\end{document}    

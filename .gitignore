@@ -2,6 +2,8 @@
 notes.txt
 fontdump.lua
 build/
+*.prj
+*.prj.bak
 
 
 ## Core latex/pdflatex auxiliary files:
@@ -13,6 +15,8 @@ build/
 *.out
 *.toc
 *.tmp
+
+*.tuc
 
 ## Intermediate documents:
 *.dvi

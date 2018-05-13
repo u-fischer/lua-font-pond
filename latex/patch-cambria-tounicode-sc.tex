@@ -1,0 +1,41 @@
+% !Mode:: "TeX:UTF-8:Main"
+% Date: 13.05.2018
+% Descriptions: patch cambria so that small caps characters copy&paste correctly
+% Source: https://tex.stackexchange.com/a/420568/2388
+% open questions: extend the list to all needed characters.
+%                 find a way to store such patches permantly and use them. goodies?
+
+\documentclass{article}
+
+\usepackage{luacode}
+
+\begin{luacode}
+
+local patch_cambriasc = function (fontdata)
+ if fontdata.fontname == "Cambria"
+ then
+   fontdata.characters[983054]["tounicode"]="006D" -- m
+   fontdata.characters[983055]["tounicode"]="006E" -- n
+   fontdata.characters[983056]["tounicode"]="006F" -- o
+   fontdata.characters[983213]["tounicode"]="0308" -- accent 0308
+   fontdata.characters[983219]["tounicode"]="030A" -- accent 030A
+   fontdata.characters[983078]["tounicode"]="00E6" -- æ
+   fontdata.characters[983084]["tounicode"]="00E7" -- ç
+ end
+end
+
+luatexbase.add_to_callback
+ (
+  "luaotfload.patch_font",
+   patch_cambriasc,
+  "change_cambria"
+ )
+\end{luacode}
+
+\usepackage{fontspec}
+
+\setmainfont[Ligatures={NoCommon}]{Cambria}
+
+\begin{document}
+mno \textsc{omn} %mno omn
+\end{document} 
