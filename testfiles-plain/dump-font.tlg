@@ -1,5 +1,0 @@
-This is a generated file for the l3build validation system.
-Don't change this file in any respect.
-Inserting `my_private_callbacks.dump_font' at position 5 in `luaotfload.patch_font'.
-luaotfload | cache : Lookup cache loaded from C:/texlive/2018/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc.
-luaotfload | db : Font names database loaded from. ./luaotfload-names.luc(load luc: ../texgyrepagella-regular.luc)
