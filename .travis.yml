@@ -9,6 +9,7 @@ services: docker
 
 script: |
   docker run \
+  -e diffexe=diff \
   -v ${TRAVIS_BUILD_DIR}:/travis -w /travis \
   -it texlive/texlive sh -c \
-  "tlmgr install latex luatex l3build; texlua build.lua check --quiet --halt-on-error"
+  "tlmgr install latex latex-bin luatex l3build; l3build check -q -H"
