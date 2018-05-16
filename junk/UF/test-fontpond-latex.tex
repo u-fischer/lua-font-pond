@@ -1,0 +1,13 @@
+% !Mode:: "TeX:UTF-8:Main"
+
+\documentclass{article}
+\usepackage{luaotfload}
+\begin{document}
+\font\testluafont={file:latex-font-test.lua:mode=node;+liga;original=arial.ttf}
+{\testluafont So when we use it we get text ffi}
+
+%\font\testluafont={file:latex-font-test.lua:mode=node;+liga;option=line} at 30pt
+%{\testluafont So when we use it we get text ffi}
+
+
+\end{document} 
