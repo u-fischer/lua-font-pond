@@ -3,9 +3,17 @@
 \documentclass{article}
 \usepackage{luaotfload}
 \begin{document}
-\font\testluafont={file:latex-font-test.lua:mode=node;+liga;original=arial.ttf}
+
+
+\font\testluafont={[latex-font-test.lua]:mode=node;+liga;original=arial}
 {\testluafont So when we use it we get text ffi}
 
+%\font\testluafont={file:latex-font-test.lua:mode=node;+liga;original=arial}
+%{\testluafont So when we use it we get text ffi}
+
+
+
+\font\test={file:texgyrepagella-regular.otf} \test blub
 %\font\testluafont={file:latex-font-test.lua:mode=node;+liga;option=line} at 30pt
 %{\testluafont So when we use it we get text ffi}
 

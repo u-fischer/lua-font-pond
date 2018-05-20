@@ -63,12 +63,24 @@ local logreport           = luaotfload.log.report
 
 local resolve_file
 resolve_file = function (specification)
-    print("YYYYYYYYYY".. specification.name)
-    texio.write_nl("YYYYYY"..specification.name)
+    texio.write_nl("XXXXX 1:inside luaotfload-resolvers: function resolve_files XXXXX")
+    texio.write_nl( "specification name:" .. specification.name)
+    texio.write_nl( "specification table:")
     for key, value in pairs(specification) do
         texio.write_nl(key ..": ".. tostring(value))
     end
-    local name, _format, success = fonts.names.lookup_font_file (specification.name)
+    if specification.forcedname then
+     -- local name, _format, success = fonts.names.lookup_font_file (specification.forcedname)
+    end
+    -- texio.write_nl("YYYYY name YYYYY"..tostring(name))  
+    -- else 
+     local name, _format, success = fonts.names.lookup_font_file (specification.name)
+    --end  
+   texio.write_nl("YYYYY name2222 YYYYY"..tostring(name)) 
+    if success ~= true then
+     -- local name, _format, success = fonts.names.lookup_font_file (specification.forcedname)
+    end 
+    texio.write_nl("XXXXX inside resolve files XXXXX  name: "..tostring(name))
     local suffix = filesuffix (name)
     if fonts.formats[suffix] then
         specification.forced      = stringlower (suffix)
@@ -95,6 +107,8 @@ end
 local resolve_path
 resolve_path = function (specification)
     local name       = specification.name
+    texio.write_nl("00000:inside luaotfload-resolvers: function resolve_path XXXXX")
+    texio.write_nl("name="..name)
     local exists, _  = lfsisfile (name)
     if not exists then -- resort to file: lookup
         logreport ("log", 1, "resolve",

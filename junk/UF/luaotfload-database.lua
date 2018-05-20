@@ -669,16 +669,28 @@ local dummy_findfile = resolvers.findfile -- from basics-gen
 --- string -> string * string * bool
 local lookup_font_file
 lookup_font_file = function (filename)
+    -- looks up in the database file:
     local found = lookup_filename (filename)
-    print("XXXXXXXXXXX"..filename)
+    if found then
+      texio.write_nl("ZZZZZ inside lookup font file, found!!!!")
+    end
+    texio.write_nl("XXXXX inside lookup font file filename XXXX "..tostring(filename))
+    texio.write_nl("XXXXX inside lookup font file forcedname XXXX "..tostring(forcedname))
     if not found then
         found = dummy_findfile(filename)
     end
-
+    if not found then
+     ---  found = dummy_findfile(filename,"lua") 
+    end    
+    if not found then
+     texio.write_nl ("NOKNOKNOK")
+    else
+     texio.write_nl ("OKOKOK"..filename)    
+    end 
     if found then
         return found, nil, true
     end
-
+     
     for i=1, #type1_metrics do
         local format = type1_metrics[i]
         if resolvers.findfile(filename, format) then
