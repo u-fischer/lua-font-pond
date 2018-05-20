@@ -1,15 +1,15 @@
 % !Mode:: "TeX:UTF-8:Main"
 
 \documentclass{article}
-\usepackage{luaotfload}
+%\usepackage{luaotfload}
 \begin{document}
 
 
-\font\testluafont={[latex-font-test.lua]:mode=node;+liga;original=arial}
-{\testluafont So when we use it we get text ffi}
-
-%\font\testluafont={file:latex-font-test.lua:mode=node;+liga;original=arial}
+%\font\testluafont={[latex-font-test.lua]:mode=node;+liga;original=arial}
 %{\testluafont So when we use it we get text ffi}
+
+\font\testluafont=file:latex-font-test.lua:mode=node;+liga;original=arial
+{\testluafont So when we use it we get text ffi}
 
 
 

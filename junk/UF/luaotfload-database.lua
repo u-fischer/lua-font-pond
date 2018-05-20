@@ -672,10 +672,10 @@ lookup_font_file = function (filename)
     -- looks up in the database file:
     local found = lookup_filename (filename)
     if found then
-      texio.write_nl("ZZZZZ inside lookup font file, found!!!!")
+      texio.write_nl("DDDD1  inside lookup font file, found!!!!"..found)
     end
-    texio.write_nl("XXXXX inside lookup font file filename XXXX "..tostring(filename))
-    texio.write_nl("XXXXX inside lookup font file forcedname XXXX "..tostring(forcedname))
+    texio.write_nl("DDDD2 inside lookup font file filename DDDD "..tostring(filename))
+    texio.write_nl("DDDD3 inside lookup font file forcedname DDDD "..tostring(forcedname))
     if not found then
         found = dummy_findfile(filename)
     end
@@ -690,19 +690,21 @@ lookup_font_file = function (filename)
     if found then
         return found, nil, true
     end
-     
+    texio.write_nl("DDDD4 inside lookup font file forcedname DDDD") 
     for i=1, #type1_metrics do
         local format = type1_metrics[i]
         if resolvers.findfile(filename, format) then
             return file.addsuffix(filename, format), format, true
         end
     end
-
+    texio.write_nl("DDDD5 inside lookup font file forcedname DDDD")
     if not fonts_reloaded and config.luaotfload.db.update_live == true then
+    texio.write_nl("DDDD5-6 inside lookup font file forcedname DDDD")
         return reload_db (stringformat ("File not found: %s.", filename),
                           lookup_font_file,
                           filename)
     end
+    texio.write_nl("DDDD6 inside lookup font file forcedname DDDD")
     return filename, nil, false
 end
 

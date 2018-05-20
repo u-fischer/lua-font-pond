@@ -1,0 +1,81 @@
+\input luaotfload.sty
+
+%% font resolver how-to:
+%% simple example: short hand resolver that calls
+%% the name resolver after translating the request
+\directlua{
+
+  %% first we define a dictionary of shorthands
+  %% the CMU one contains subcategories
+  local shorthands = {
+    CMU = {
+      default = "rm",
+      rm = "CMU Serif",
+      ss = "CMU Sans Serif",
+    },
+    AP  = "Antykwa Poltawskiego",
+  }
+
+  %% next we define some style shorthands
+  local styles = {
+    it = "italic",
+    bf = "bold",
+    bi = "bold italic",
+  }
+
+  %% then we need a function that resolves shorthands
+  %% to hook into the callback
+  local font_shorthands = function (spec)
+    local req    = spec.name
+    local parts  = string.explode(req, "!*")
+    local family = parts[1]
+
+    %% resolve the shorthand for the font name
+    if not family then
+      print("error: cannot resolve font", req)
+      os.exit(1, true)
+    else
+      familydef = shorthands[family]
+      if type(familydef) == "string" then
+        family = familydef
+      else
+        family = familydef[parts[2]]
+        if not family then
+          family = familydef[familydef.default]
+        end
+      end
+    end
+
+    %% lookup the requested style
+    local style = parts[3] or parts[2]
+    if style and styles[style] then
+      spec.style = styles[style]
+    end
+
+    spec.name = family
+
+    %% rewrite the name field and call the standard
+    %% name: resolver
+    fonts.definers.resolvers.name(spec)
+  end
+
+  %% lastly, install the function in the callback
+  luatexbase.add_to_callback(
+    "luaotfload.resolve_font",
+    font_shorthands,
+    "user.font_shorthands")
+}
+
+\font\cmur  = "my:CMU!rm:+onum" at 1pc
+\font\cmusi = "my:CMU!ss!it:+onum" at 1pc
+\font\apr   = "my:AP"    at 12pt
+\font\apbi  = "my:AP!bi" at 12pt
+
+\cmur foo
+{\cmusi bar} baz\par
+
+{\apr whatever {\cmur back to normal}
+ {\apbi emphatic!}
+ this face again}\par
+
+\bye

@@ -63,7 +63,7 @@ local logreport           = luaotfload.log.report
 
 local resolve_file
 resolve_file = function (specification)
-    texio.write_nl("XXXXX 1:inside luaotfload-resolvers: function resolve_files XXXXX")
+    texio.write_nl("1RRRRR inside luaotfload-resolvers: function resolve_files XXXXX")
     texio.write_nl( "specification name:" .. specification.name)
     texio.write_nl( "specification table:")
     for key, value in pairs(specification) do
@@ -74,14 +74,36 @@ resolve_file = function (specification)
     end
     -- texio.write_nl("YYYYY name YYYYY"..tostring(name))  
     -- else 
-     local name, _format, success = fonts.names.lookup_font_file (specification.name)
-    --end  
-   texio.write_nl("YYYYY name2222 YYYYY"..tostring(name)) 
+    local myforced = specification.forced
+    local myforcedname=specification.forcedname
+    local name
+    local _format
+    local success
+    if myforced =="lua" and myforcedname then
+      texio.write_nl("newRRRRR  force YYYYY"..tostring(forced)) 
+      local file = kpse.find_file(forcedname)
+      texio.write_nl("newRRRRR  force YYYYY"..tostring(file))
+      name = file
+      texio.write_nl("newRRRRRnamenew YYYYY"..tostring(name)) 
+       _format = nil
+       success = true
+    else
+      name, _format, success = fonts.names.lookup_font_file (specification.name)
+     texio.write_nl("000000000RRRR name".. tostring(name))
+    end 
+    texio.write_nl("22222RRRR name".. tostring(name))
+     
+   texio.write_nl("2RRRRR  name YYYYY"..tostring(name)) 
+   texio.write_nl("3RRRRR  _format YYYYY"..tostring(_format)) 
+   texio.write_nl("4RRRRR  success YYYYY"..tostring(success)) 
+   
     if success ~= true then
      -- local name, _format, success = fonts.names.lookup_font_file (specification.forcedname)
     end 
-    texio.write_nl("XXXXX inside resolve files XXXXX  name: "..tostring(name))
+    texio.write_nl("5RRRR inside luaotfload-resolvers: function resolve_files ")
+    texio.write_nl("6RRRR name".. tostring(name))
     local suffix = filesuffix (name)
+    texio.write_nl("7RRRR name".. tostring(name))
     if fonts.formats[suffix] then
         specification.forced      = stringlower (suffix)
         specification.forcedname  = fileremovesuffix (name)
@@ -138,6 +160,10 @@ end
 
 local resolve_name
 resolve_name = function (specification)
+    texio.write_nl("RRRRR-NNNNN")
+      for key, value in pairs(specification) do
+        texio.write_nl(key ..": ".. tostring(value))
+    end
     local resolver = fonts.names.lookup_font_name_cached
     if config.luaotfload.run.resolver == "normal" then
         resolver = fonts.names.lookup_font_name

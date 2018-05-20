@@ -8,22 +8,33 @@
 % fonts-mkiv.pdf
 % https://www.mail-archive.com/ntg-context@ntg.nl/msg87811.html
 % Remarks:
-% the original lua code tried to add an /Actualtext around 
+% the original lua code tried to add an /Actualtext around
 % the rule to get correct copy&paste. As this doesn't work with
-% rules it was removed here. 
-% Open questions:
-% how to avoid that luaotfload always writes
-% luaotfload | db : Reload initiated (formats: otf,ttf,ttc); reason: "File not found: 
-% latex-font-demo-rule.".
+% rules it was removed here.
+%
 
 \documentclass{article}
 \begin{document}
-\font\testluafont={file:latex-font-demo-rule.lua:mode=node;+liga;original=arial.ttf}
+
+% the value of "original" should be a name, not a filename!
+
+% This syntax works without the database and so doesn't trigger a reload.
+% but it doesn't work with files in the texmf-tree
+\font\testluafont=[latex-font-demo-rule.lua]:mode=node;+liga;original=arial
 {\testluafont So when we use it we get text ffi}
 
-\font\testluafont={file:latex-font-demo-rule.lua:mode=node;+liga;option=line} at 30pt
-{\testluafont So when we use it we get text ffi}
+% This syntax also works with files in the texmf tree but triggers 
+% luaotfload | db : Reload initiated (formats: otf,ttf,ttc); reason: "File not found:
+% latex-font-demo-rule.".
+ 
+%\font\testluafont={file:latex-font-demo-rule.lua:mode=node;+liga;original=arial}
+%{\testluafont So when we use it we get text ffi}
 
+%\font\testluafont=[latex-font-demo-rule.lua]:mode=node;+liga;option=line} at 30pt
+%{\testluafont So when we use it we get text ffi}
+%
+%\font\testluafont=file:test-rule.lua:mode=node;+liga;option=line} at 30pt
+%{\testluafont So when we use it we get text ffi}
 
 \end{document}
 
