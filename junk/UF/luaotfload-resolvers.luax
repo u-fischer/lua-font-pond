@@ -69,25 +69,24 @@ resolve_file = function (specification)
     for key, value in pairs(specification) do
         texio.write_nl(key ..": ".. tostring(value))
     end
-    if specification.forcedname then
-     -- local name, _format, success = fonts.names.lookup_font_file (specification.forcedname)
-    end
     -- texio.write_nl("YYYYY name YYYYY"..tostring(name))  
     -- else 
     local myforced = specification.forced
     local myforcedname=specification.forcedname
-    local name
+    local name = specification.name
     local _format
-    local success
-    if myforced =="lua" and myforcedname then
+    local success = false
+    if specification.forced =="lua" and specification.forcedname then
       texio.write_nl("newRRRRR  forcename YYYYY"..tostring(myforcedname)) 
-      local file = kpse.find_file(myforcedname)
-      texio.write_nl("newRRRRR  force YYYYY"..tostring(file))
-      name = file
-   --  name, _format, success = fonts.names.lookup_font_file (specification.name)
-      texio.write_nl("newRRRRRnamenew YYYYY"..tostring(name)) 
-       _format = nil
+      local file = kpse.find_file(specification.forcedname)
+--      texio.write_nl("newRRRRR  force YYYYY"..tostring(file))
+      if file then
+       name = file
+--   --  name, _format, success = fonts.names.lookup_font_file (specification.name)
+--      texio.write_nl("newRRRRRnamenew YYYYY"..tostring(name)) 
+--       _format = nil
        success = true
+      end 
     else
      name, _format, success = fonts.names.lookup_font_file (specification.name)
      texio.write_nl("000000000RRRR name".. tostring(name))
@@ -106,10 +105,16 @@ resolve_file = function (specification)
     local suffix = filesuffix (name)
     texio.write_nl("7RRRR name".. tostring(name))
     if fonts.formats[suffix] then
+      texio.write_nl("7RRRR suffix".. tostring(suffix))
         specification.forced      = stringlower (suffix)
         specification.forcedname  = fileremovesuffix (name)
+        
     else
         specification.name = name
+    end
+     texio.write_nl( "new specification table:")
+    for key, value in pairs(specification) do
+        texio.write_nl(key ..": ".. tostring(value))
     end
     if success ~= true then
         logreport ("log", 1, "resolve", "file lookup of %q unsuccessful", name)

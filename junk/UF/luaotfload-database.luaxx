@@ -6,6 +6,8 @@ if not modules then modules = { } end modules ['luaotfload-database'] = {
     license   = "GNU GPL v2.0"
 }
 
+texio.write_nl{"!!!!! UF: Using changed luaotfload-database.lua !!!!!" }
+
 --[[doc--
 
     With version 2.7 we killed of the Fontforge libraries in favor of
@@ -669,42 +671,34 @@ local dummy_findfile = resolvers.findfile -- from basics-gen
 --- string -> string * string * bool
 local lookup_font_file
 lookup_font_file = function (filename)
-    -- looks up in the database file:
     local found = lookup_filename (filename)
-    if found then
-      texio.write_nl("DDDD1  inside lookup font file, found!!!!"..found)
-    end
-    texio.write_nl("DDDD2 inside lookup font file filename DDDD "..tostring(filename))
-    texio.write_nl("DDDD3 inside lookup font file forcedname DDDD "..tostring(forcedname))
+
     if not found then
         found = dummy_findfile(filename)
     end
+    -- UF 21.05.2018 added a search for lua-files
     if not found then
-     ---  found = dummy_findfile(filename,"lua") 
-    end    
-    if not found then
-     texio.write_nl ("NOKNOKNOK")
-    else
-     texio.write_nl ("OKOKOK"..filename)    
-    end 
+        found = dummy_findfile(filename, "lua")
+        if found then 
+          texio.write_nl("!!!!! UF: luaotfload found lua font ".. found .. "!!!!!")
+        end
+    end
+    -- end changes UF
     if found then
         return found, nil, true
     end
-    texio.write_nl("DDDD4 inside lookup font file forcedname DDDD") 
     for i=1, #type1_metrics do
         local format = type1_metrics[i]
         if resolvers.findfile(filename, format) then
             return file.addsuffix(filename, format), format, true
         end
     end
-    texio.write_nl("DDDD5 inside lookup font file forcedname DDDD")
+    
     if not fonts_reloaded and config.luaotfload.db.update_live == true then
-    texio.write_nl("DDDD5-6 inside lookup font file forcedname DDDD")
         return reload_db (stringformat ("File not found: %s.", filename),
                           lookup_font_file,
                           filename)
     end
-    texio.write_nl("DDDD6 inside lookup font file forcedname DDDD")
     return filename, nil, false
 end
 
@@ -1244,9 +1238,7 @@ end
 reload_db = function (why, caller, ...)
     local namedata  = name_index
     local formats   = tableconcat (namedata.meta.formats, ",")
- --   for key, value in pairs(namedata) do
-   --     print('\t', key, value)
- --   end
+
     logreport ("both", 0, "db",
                "Reload initiated (formats: %s); reason: %q.",
                formats, why)

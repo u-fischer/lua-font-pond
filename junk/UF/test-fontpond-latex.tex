@@ -1,19 +1,116 @@
 % !Mode:: "TeX:UTF-8:Main"
 
 \documentclass{article}
-%\usepackage{luaotfload}
+\usepackage{luacode}
+\begin{luacode}
+
+--local remapper = {
+--    otf    = "opentype fonts",
+--    ttf    = "truetype fonts",
+--    ttc    = "truetype fonts",
+--    cid    = "cid maps",
+--    cidmap = "cid maps",
+-- -- fea    = "font feature files", -- no longer supported
+--    pfb    = "type1 fonts",        -- needed for vector loading
+--    afm    = "afm",
+--    enc    = "enc files",
+--}
+--
+--function resolvers.findfile(name,fileformat)
+--    name = string.gsub(name,"\\","/")
+--    texio.write_nl("XXXXXXXXXXXXXXXXXXXXXXX"..tostring(name).."--"..tostring(fileformat))
+--    if not fileformat or fileformat == "" then
+--        fileformat = file.suffix(name)
+--        if fileformat == "" then
+--            fileformat = "lua"
+--        end
+--    end
+--    fileformat = string.lower(fileformat)
+--    fileformat = remapper[fileformat] or fileformat
+--    local found = kpse.find_file(name,fileformat)
+--    if not found or found == "" then
+--        found = kpse.find_file(name,"other text files")
+--    end
+--    return found
+--end
+
+
+--local resolve_lua_file
+--local fileremovesuffix    = file.removesuffix
+--resolve_lua_file = function (specification)
+--    texio.write_nl("UF resolve lua file ")
+--    for key, value in pairs(specification) do
+--        texio.write_nl(key ..": ".. tostring(value))
+--    end
+-- --   local name = specification.name
+-- --    local _format
+--     local success = false
+-- --   if specification.forced =="lua" and specification.forcedname then
+--     local file = kpse.find_file(specification.name)
+--     texio.write_nl("file: ".. tostring(file))
+--     if file then
+--       specification.forced      = "lua"
+--       specification.forcedname  = fileremovesuffix (file)
+--       specification.name  = file
+--       specification.lookup  = "file"
+--       success = true
+--      end
+--    texio.write_nl("new specification")
+--
+--    for key, value in pairs(specification) do
+--        texio.write_nl(key ..": ".. tostring(value))
+--    end
+--       texio.write_nl(tostring(name))
+--  --  else
+--    --  name, _format, success = fonts.names.lookup_font_file (specification.name)
+--  --  end
+--    --local suffix = filesuffix (name)
+----    if fonts.formats[suffix] then
+----       specification.forced      = "lua"
+----        specification.forcedname  = fileremovesuffix (name)
+----    else
+----        specification.name = name
+----    end
+--    if success ~= true then
+--        logreport ("log", 1, "resolve", "file lookup of %q unsuccessful", name)
+--    end
+--    return success
+--end
+--
+-- luatexbase.add_to_callback(
+--    "luaotfload.resolve_font",
+--    resolve_lua_file,
+--   "load lua file")
+
+
+\end{luacode}
 \begin{document}
 
 
 %\font\testluafont={[latex-font-test.lua]:mode=node;+liga;original=arial}
 %{\testluafont So when we use it we get text ffi}
 
-\font\testluafont=file:latex-font-test.lua:mode=node;+liga;original=arial
+%%\font\testluafont=file:latex-font-demo-rule-texmf-font.lua:mode=node;+liga;original=arial
+%%{\testluafont So when we use it we get text ffi}
+
+
+\font\testluafont=file:latex-font-demo-rule-texmf-tex.lua:mode=node;+liga;original=arial
 {\testluafont So when we use it we get text ffi}
 
 
 
-\font\test={file:texgyrepagella-regular.otf} \test blub
+\directlua{f=kpse.find_file("latex-font-demo-rule-texmf-font.lua","misc fonts")
+tex.sprint(tostring(f))}
+
+
+\directlua{f=kpse.find_file("latex-font-demo-rule-texmf-font-o.lua","opentype fonts")
+tex.sprint(tostring(f))}
+
+
+\directlua{f=kpse.find_file("texgyrepagella-regular.otf","opentype fonts")
+tex.sprint(tostring(f))}
+
+%\font\test={file:NotoSansEthiopic-Regular.ttf} \test blub
 %\font\testluafont={file:latex-font-test.lua:mode=node;+liga;option=line} at 30pt
 %{\testluafont So when we use it we get text ffi}
 

@@ -20,21 +20,26 @@
 
 % This syntax works without the database and so doesn't trigger a reload.
 % but it doesn't work with files in the texmf-tree
+
 \font\testluafont=[latex-font-demo-rule.lua]:mode=node;+liga;original=arial
 {\testluafont So when we use it we get text ffi}
 
-% This syntax also works with files in the texmf tree but triggers 
+\font\testluafont=[latex-font-demo-rule.lua]:mode=node;+liga;option=line} at 30pt
+{\testluafont So when we use it we get text ffi}
+
+
+% This syntax works with files in the texmf tree (in the tex-folder) but triggers
 % luaotfload | db : Reload initiated (formats: otf,ttf,ttc); reason: "File not found:
 % latex-font-demo-rule.".
- 
-%\font\testluafont={file:latex-font-demo-rule.lua:mode=node;+liga;original=arial}
-%{\testluafont So when we use it we get text ffi}
+% This can be avoided by using the local luaotfload-database.lua (in texmf/tex/luatex)
+% It would be more logical if the lua-files where in fonts (e.g. fonts/misc or fonts/opentype
+% but this seems to need more changes in the luaotfload-files.
 
-%\font\testluafont=[latex-font-demo-rule.lua]:mode=node;+liga;option=line} at 30pt
-%{\testluafont So when we use it we get text ffi}
-%
-%\font\testluafont=file:test-rule.lua:mode=node;+liga;option=line} at 30pt
-%{\testluafont So when we use it we get text ffi}
+\font\testluafont={file:latex-font-demo-rule-texmf-tex.lua:mode=node;+liga;original=arial}
+{\testluafont So when we use it we get text ffi}
+
+
+
 
 \end{document}
 
