@@ -1,0 +1,37 @@
+% !Mode:: "TeX:UTF-8:Main"
+
+\documentclass{article}
+\usepackage{luacode}
+
+\begin{document}
+
+
+\font\testluafont={[latex-font-chess.lua]:mode=node;+liga;original=arial} at 30pt
+{\testluafont So kK when we use it we get text ffi}
+
+%%\font\testluafont=file:latex-font-demo-rule-texmf-font.lua:mode=node;+liga;original=arial
+%%{\testluafont So when we use it we get text ffi}
+
+
+\font\testluafont=file:latex-font-demo-rule-texmf-tex.lua:mode=node;+liga;original=arial
+{\testluafont So when we use it we get text ffi}
+
+
+
+\directlua{f=kpse.find_file("latex-font-demo-rule-texmf-font.lua","misc fonts")
+tex.sprint(tostring(f))}
+
+
+\directlua{f=kpse.find_file("latex-font-demo-rule-texmf-font-o.lua","opentype fonts")
+tex.sprint(tostring(f))}
+
+
+\directlua{f=kpse.find_file("texgyrepagella-regular.otf","opentype fonts")
+tex.sprint(tostring(f))}
+
+%\font\test={file:NotoSansEthiopic-Regular.ttf} \test blub
+%\font\testluafont={file:latex-font-test.lua:mode=node;+liga;option=line} at 30pt
+%{\testluafont So when we use it we get text ffi}
+
+
+\end{document} 
