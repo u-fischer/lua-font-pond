@@ -80,15 +80,16 @@ resolve_file = function (specification)
     local _format
     local success
     if myforced =="lua" and myforcedname then
-      texio.write_nl("newRRRRR  force YYYYY"..tostring(forced)) 
-      local file = kpse.find_file(forcedname)
+      texio.write_nl("newRRRRR  forcename YYYYY"..tostring(myforcedname)) 
+      local file = kpse.find_file(myforcedname)
       texio.write_nl("newRRRRR  force YYYYY"..tostring(file))
       name = file
+   --  name, _format, success = fonts.names.lookup_font_file (specification.name)
       texio.write_nl("newRRRRRnamenew YYYYY"..tostring(name)) 
        _format = nil
        success = true
     else
-      name, _format, success = fonts.names.lookup_font_file (specification.name)
+     name, _format, success = fonts.names.lookup_font_file (specification.name)
      texio.write_nl("000000000RRRR name".. tostring(name))
     end 
     texio.write_nl("22222RRRR name".. tostring(name))
