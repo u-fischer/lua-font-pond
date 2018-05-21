@@ -4,6 +4,8 @@ fontdump.lua
 build/
 *.prj
 *.prj.bak
+junk/
+texmf/ls-R         
 
 
 ## Core latex/pdflatex auxiliary files:
