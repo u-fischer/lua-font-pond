@@ -12,8 +12,7 @@ env:
 
 script: |
   docker run \
-  -e diffexe=diff \  
-  --env TEXMFHOME \
+  -e diffexe=diff --env TEXMFHOME \
   -v ${TRAVIS_BUILD_DIR}:/travis -w /travis \
   -it texlive/texlive sh -c \
   "tlmgr install fontspec graphics l3build latex latex-bin luaotfload luatex microtype opensans && l3build check -q -H"
