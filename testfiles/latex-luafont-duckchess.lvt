@@ -6,7 +6,7 @@
 \begin{document}
 
 \START
-
+\IfFileExists{duckchess-glyphs.pdf}{\typeout{yes}}{\typeout{no}}
 xxxx
 
 \end{document}
