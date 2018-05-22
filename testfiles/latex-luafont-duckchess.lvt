@@ -1,14 +1,17 @@
 \input regression-test.tex\relax
 
 \documentclass[parskip=full]{scrartcl}
-\font\duckchessfamily = "file:luafont-duckchess.lua:mode=node;+liga;+tlig;original=latinmodernsans" at 20pt
 \begin{document}
 
-\START\showoutput
+\START
 \sffamily
-We proudly preset the duck chess font:
-
-{\duckchessfamily
-1. Nf3 nf6 2. e4 e5 3. Bb5 lb4 4. Qe2 qe7 5. Rg1 rg7 6. Kf1 kf7
+\directlua{
+ f=kpse.find_file("duckchess-glyphs.pdf")
+ if f then 
+           texio.write_nl("found")
+ end           
 }
+
+blub
+
 \end{document}

@@ -12,4 +12,4 @@ script: |
   -e diffexe=diff \
   -v ${TRAVIS_BUILD_DIR}:/travis -w /travis \
   -it texlive/texlive sh -c \
-  "tlmgr install fontspec graphics l3build latex latex-bin luaotfload luatex microtype opensans &&  tlmgr conf auxtrees add texmf && l3build check -q -H"
+  "tlmgr install fontspec graphics l3build latex latex-bin luaotfload luatex microtype opensans &&  tlmgr conf auxtrees add /texmf && l3build check -q -H"
