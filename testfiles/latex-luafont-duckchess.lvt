@@ -2,7 +2,7 @@
 \input regression-test.tex\relax
 
 \documentclass{article}
-\usepackage{graphicx}
+\usepackage{fontspec}
 \begin{document}
 
 \START
