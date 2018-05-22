@@ -1,0 +1,10 @@
+\input regression-test.tex\relax
+
+\documentclass{article}
+\usepackage{graphicx}
+\begin{document}
+
+\START
+\includegraphics{duckchess-glyphs}
+
+\end{document}
