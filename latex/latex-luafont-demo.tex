@@ -21,10 +21,10 @@
 % This syntax works without the database and so doesn't trigger a reload.
 % but it doesn't work with files in the texmf-tree
 
-\font\testluafont=[latex-font-demo-rule.lua]:mode=node;+liga;original=arial
+\font\testluafont=[luafont-demo-rule.lua]:mode=node;+liga;original=arial
 {\testluafont So when we use it we get text ffi}
 
-\font\testluafont=[latex-font-demo-rule.lua]:mode=node;+liga;option=line} at 30pt
+\font\testluafont=[luafont-demo-rule.lua]:mode=node;+liga;option=line} at 30pt
 {\testluafont So when we use it we get text ffi}
 
 
@@ -35,7 +35,7 @@
 % It would be more logical if the lua-files where in fonts (e.g. fonts/misc or fonts/opentype
 % but this seems to need more changes in the luaotfload-files.
 
-\font\testluafont={file:latex-font-demo-rule-texmf-tex.lua:mode=node;+liga;original=arial}
+\font\testluafont={file:luafont-demo-rule-texmf-tex.lua:mode=node;+liga;original=arial}
 {\testluafont So when we use it we get text ffi}
 
 

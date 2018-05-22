@@ -17,11 +17,11 @@
 \definefontfeature
   [myrulefont]
   [default]
-  [original=file:texgyrepagella-regular.otf,
+  [%original=file:texgyrepagella-regular.otf, %not always there
    option=line]
 \definefont
   [MyRuleFont]
-  [file:context-font-demo-rule.lua*myrulefont]
+  [file:luafont-context-demo-rule.lua*myrulefont]
 
 \starttext
 {\MyRuleFont So when we use it we get text }
@@ -29,7 +29,7 @@
 %low-level definition
 %at least one feature (e.g. mode=node) is needed
 
-\font\testluafont={file:context-font-demo-rule.lua:mode=node;+liga;original=arial.ttf}
+\font\testluafont={file:luafont-context-demo-rule.lua:mode=node;+liga;original=arial.ttf}
 {\testluafont So when we use it we get text ffi}
 
 \stoptext

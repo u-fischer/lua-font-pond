@@ -2,18 +2,18 @@
 % Date: 22.05.2018
 % Description: use pictures as glyphs for a font
 % open type feature
-% Requires: - latex-font-duckchess.lua 
-%           - duckchess-glyphs.pdf 
-%        (both is in the pdf
-%open question: 
-% -how to call the font with fontspec commands. 
+% Requires: - latex-font-duckchess.lua
+%           - duckchess-glyphs.pdf
+%          (both is in the texmf)
+%open question:
+% -how to call the font with fontspec commands.
 %- can one avoid the terminal messages regarding the graphics inclusion
 
 \documentclass{article}
 \usepackage{fontspec}
 \setmainfont{Latin Modern Roman}
 
-\font\duckchessfamily = "file:lua-font-duckchess.lua:mode=node;+liga;+tlig;original=latinmodernsans"
+\font\duckchessfamily = "file:luafont-duckchess.lua:mode=node;+liga;+tlig;original=latinmodernsans"
 \begin{document}
 
 \sffamily
@@ -32,4 +32,4 @@ Some normal text
 }
 \ExplSyntaxOff
 \endgroup
-\end{document}       
+\end{document}
