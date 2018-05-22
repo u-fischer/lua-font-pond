@@ -1,0 +1,162 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+(load luc: ../lmsans10-regular.luc)
+Completed box being shipped out [1]
+\vbox(655.63496+0.0)x435.61176, direction TLT
+.\glue -25.16531
+.\vbox(680.80028+0.0)x418.25555, shifted 17.3562, direction TLT
+..\vbox(17.0+0.0)x418.25555, glue set 17.0fil, direction TLT
+...\glue 0.0 plus 1.0fil
+...\hbox(0.0+0.0)x418.25555, direction TLT
+..\glue 20.40001
+..\glue(\lineskip) 0.0
+..\vbox(595.80026+0.0)x418.25555, glue set 534.57843fil, direction TLT
+...\write-{}
+...\glue(\topskip) 3.28026
+...\hbox(7.71974+2.24475)x418.25555, glue set 228.733fil, direction TLT
+....\localpar
+.....\localinterlinepenalty=0
+.....\localbrokenpenalty=0
+.....\localleftbox=null
+.....\localrightbox=null
+....\hbox(0.0+0.0)x0.0, direction TLT
+....\TU/lmss/m/n/10.95 W
+....\kern-0.3066 (font)
+....\TU/lmss/m/n/10.95 e
+....\glue(\spaceskip) 3.64635 plus 1.82318 minus 1.21545
+....\TU/lmss/m/n/10.95 p
+....\kern-0.3066 (font)
+....\TU/lmss/m/n/10.95 r
+....\TU/lmss/m/n/10.95 o
+....\TU/lmss/m/n/10.95 u
+....\TU/lmss/m/n/10.95 d
+....\TU/lmss/m/n/10.95 l
+....\TU/lmss/m/n/10.95 y
+....\glue(\spaceskip) 3.64635 plus 1.82318 minus 1.21545
+....\TU/lmss/m/n/10.95 p
+....\kern-0.3066 (font)
+....\TU/lmss/m/n/10.95 r
+....\TU/lmss/m/n/10.95 e
+....\discretionary (penalty 50)
+.....< \TU/lmss/m/n/10.95 -
+....\TU/lmss/m/n/10.95 s
+....\TU/lmss/m/n/10.95 e
+....\TU/lmss/m/n/10.95 t
+....\glue(\spaceskip) 3.64635 plus 1.82318 minus 1.21545
+....\TU/lmss/m/n/10.95 t
+....\TU/lmss/m/n/10.95 h
+....\TU/lmss/m/n/10.95 e
+....\glue(\spaceskip) 3.64635 plus 1.82318 minus 1.21545
+....\TU/lmss/m/n/10.95 d
+....\TU/lmss/m/n/10.95 u
+....\TU/lmss/m/n/10.95 c
+....\TU/lmss/m/n/10.95 k
+....\glue(\spaceskip) 3.64635 plus 1.82318 minus 1.21545
+....\TU/lmss/m/n/10.95 c
+....\TU/lmss/m/n/10.95 h
+....\TU/lmss/m/n/10.95 e
+....\TU/lmss/m/n/10.95 s
+....\TU/lmss/m/n/10.95 s
+....\glue(\spaceskip) 3.64635 plus 1.82318 minus 1.21545
+....\TU/lmss/m/n/10.95 f
+....\TU/lmss/m/n/10.95 o
+....\TU/lmss/m/n/10.95 n
+....\TU/lmss/m/n/10.95 t
+....\TU/lmss/m/n/10.95 :
+....\penalty 10000
+....\glue(\parfillskip) 10.95 plus 1.0fil
+....\glue(\rightskip) 0.0
+...\glue(\parskip) 13.6 plus 1.36008
+...\glue(\lineskip) 1.0
+...\hbox(14.2+4.08)x418.25555, glue set 0.15865, direction TLT
+....\localpar
+.....\localinterlinepenalty=0
+.....\localbrokenpenalty=0
+.....\localleftbox=null
+.....\localrightbox=null
+....\hbox(0.0+0.0)x0.0, direction TLT
+....\duckchessfamily 1
+....\duckchessfamily .
+....\glue(\spaceskip) 8.34666 plus 9.39001 minus 0.69556
+....\duckchessfamily N
+....\duckchessfamily f
+....\duckchessfamily 3
+....\glue(\spaceskip) 6.26 plus 3.13 minus 2.08667
+....\duckchessfamily n
+....\duckchessfamily f
+....\duckchessfamily 6
+....\glue(\spaceskip) 6.26 plus 3.13 minus 2.08667
+....\duckchessfamily 2
+....\duckchessfamily .
+....\glue(\spaceskip) 8.34666 plus 9.39001 minus 0.69556
+....\duckchessfamily e
+....\duckchessfamily 4
+....\glue(\spaceskip) 6.26 plus 3.13 minus 2.08667
+....\duckchessfamily e
+....\duckchessfamily 5
+....\glue(\spaceskip) 6.26 plus 3.13 minus 2.08667
+....\duckchessfamily 3
+....\duckchessfamily .
+....\glue(\spaceskip) 8.34666 plus 9.39001 minus 0.69556
+....\duckchessfamily B
+....\duckchessfamily b
+....\duckchessfamily 5
+....\glue(\spaceskip) 6.26 plus 3.13 minus 2.08667
+....\duckchessfamily l
+....\duckchessfamily b
+....\duckchessfamily 4
+....\glue(\spaceskip) 6.26 plus 3.13 minus 2.08667
+....\duckchessfamily 4
+....\duckchessfamily .
+....\glue(\spaceskip) 8.34666 plus 9.39001 minus 0.69556
+....\duckchessfamily Q
+....\duckchessfamily e
+....\duckchessfamily 2
+....\glue(\spaceskip) 6.26 plus 3.13 minus 2.08667
+....\duckchessfamily q
+....\duckchessfamily e
+....\duckchessfamily 7
+....\glue(\spaceskip) 6.26 plus 3.13 minus 2.08667
+....\duckchessfamily 5
+....\duckchessfamily .
+....\glue(\spaceskip) 8.34666 plus 9.39001 minus 0.69556
+....\duckchessfamily R
+....\duckchessfamily g
+....\duckchessfamily 1
+....\glue(\rightskip) 0.0
+...\penalty 300
+...\glue(\lineskip) 1.0
+...\hbox(14.04+4.08)x418.25555, glue set 286.23267fil, direction TLT
+....\duckchessfamily r
+....\duckchessfamily g
+....\duckchessfamily 7
+....\glue(\spaceskip) 6.26 plus 3.13 minus 2.08667
+....\duckchessfamily 6
+....\duckchessfamily .
+....\glue(\spaceskip) 8.34666 plus 9.39001 minus 0.69556
+....\duckchessfamily K
+....\duckchessfamily f
+....\duckchessfamily 1
+....\glue(\spaceskip) 6.26 plus 3.13 minus 2.08667
+....\duckchessfamily k
+....\duckchessfamily f
+....\duckchessfamily 7
+....\glue(\spaceskip) 6.26 plus 3.13 minus 2.08667
+....\penalty 10000
+....\glue(\parfillskip) 10.95 plus 1.0fil
+....\glue(\rightskip) 0.0
+...\glue -4.08
+...\glue 0.0 plus 1.0fil
+...\glue 0.0
+...\glue 0.0 plus 0.0001fil
+..\glue(\baselineskip) 40.30731
+..\hbox(7.2927+0.0)x418.25555, direction TLT
+...\hbox(7.2927+0.0)x418.25555, direction TLT
+....\vbox(7.2927+0.0)x418.25555, direction TLT
+.....\hbox(7.2927+0.0)x418.25555, glue set 206.39027fil, direction TLT
+......\glue 0.0 plus 1.0fil
+......\TU/lmr/m/n/10.95 1
+......\glue 0.0 plus 1.0fil
+...\glue 0.0 plus 1.0fil minus 1.0fil
+<../duckchess-glyphs.pdf><../duckchess-glyphs.pdf><../duckchess-glyphs.pdf><../duckchess-glyphs.pdf><../duckchess-glyphs.pdf><../duckchess-glyphs.pdf><../duckchess-glyphs.pdf><../duckchess-glyphs.pdf><../duckchess-glyphs.pdf><../duckchess-glyphs.pdf>
+(latex-luafont-duckchess.aux)
