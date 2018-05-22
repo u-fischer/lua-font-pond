@@ -673,10 +673,7 @@ local lookup_font_file
 lookup_font_file = function (filename)
     local found = lookup_filename (filename)
 
-    if not found then
-        found = dummy_findfile(filename)
-    end
-    -- UF 21.05.2018 added a search for lua-files
+    -- UF 21.05.2018 added a search for lua-files. lua should be prefered over .tex from dummy findfile.
     if not found then
         found = dummy_findfile(filename, "lua")
         if found then 
@@ -684,6 +681,10 @@ lookup_font_file = function (filename)
         end
     end
     -- end changes UF
+    if not found then
+        found = dummy_findfile(filename)
+    end
+
     if found then
         return found, nil, true
     end
