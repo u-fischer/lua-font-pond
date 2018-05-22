@@ -6,7 +6,7 @@
 \begin{document}
 
 \START
-\IfFileExists{/home/travis/build/u-fischer/lua-font-pond/texmf/tex/generic/luafont/duckchess-glyphs.pdf}{\typeout{yes}}{\typeout{no}}
+\IfFileExists{texmf/tex/generic/luafont/duckchess-glyphs.pdf}{\typeout{yes}}{\typeout{no}}
 
 \directlua{f=kpse.expand_var("$TEXMFHOME")
 texio.write_nl(f)
