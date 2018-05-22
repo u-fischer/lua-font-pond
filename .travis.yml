@@ -8,7 +8,7 @@ sudo: required
 services: docker
 
 env:
-  - TEXMFHOME=$TRAVIS_BUILD_DIR/texmf
+  - TEXMFHOME=${TRAVIS_BUILD_DIR}/texmf
 
 script: |
   docker run \

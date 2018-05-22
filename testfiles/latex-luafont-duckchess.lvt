@@ -9,7 +9,12 @@
 \IfFileExists{duckchess-glyphs.pdf}{\typeout{yes}}{\typeout{no}}
 
 \directlua{f=kpse.expand_var("$TEXMFHOME")
-texio.write_nl(f)}
+texio.write_nl(f)
+r=kpse.show_path("tex")
+texio.write_nl(r)
+file=kpse.find_file("duckchess-glyphs.pdf")
+texio.write_nl(file)
+}
 
 xxxx
 
