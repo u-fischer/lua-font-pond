@@ -10,10 +10,8 @@
 
 \directlua{f=kpse.expand_var("$TEXMFHOME")
 texio.write_nl(f)
-r=kpse.show_path("tex")
-texio.write_nl(r)
-file=kpse.find_file("duckchess-glyphs.pdf")
-texio.write_nl(file)
+file=kpse.find_file(kpse.expand_var("$TEXMFHOME").."/tex/generic/luafont/duckchess-glyphs.pdf")
+texio.write_nl(tostring(file))
 }
 
 xxxx
