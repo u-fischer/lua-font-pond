@@ -7,6 +7,10 @@
 
 \START
 \IfFileExists{duckchess-glyphs.pdf}{\typeout{yes}}{\typeout{no}}
+
+\directlua{f=kpse.expand_var("$TEXMFHOME")
+texio.write_nl(f)}
+
 xxxx
 
 \end{document}
