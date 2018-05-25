@@ -1,0 +1,13 @@
+% !Mode:: "TeX:UTF-8:Main"
+\input regression-test.tex\relax
+
+\documentclass{article}
+\usepackage{fontspec}
+\begin{document}
+
+\START
+\IfFileExists{duckchess-glyphs.pdf}{\typeout{yes}}{\typeout{no}}
+
+
+
+\end{document}
