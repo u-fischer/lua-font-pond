@@ -1,0 +1,56 @@
+% !Mode:: "TeX:UTF-8:Main"
+% Date: 26.05.2018
+% Description: use duckchess with chessboard
+% open type feature
+% Requires: - luafont-duckchess.lua, should be in a texmf tree in fonts/misc
+%           - luafont-duckchess-LSB2.lua  ""
+%           - duckchess-glyphs.pdf
+%          
+% open question:
+% -how to call the font with fontspec commands.
+%- can one avoid the terminal messages regarding the graphics inclusion
+\documentclass[parskip=half-,paper=A5]{scrartcl}
+\usepackage[LSB2]{fontenc}
+\usepackage{xskak}
+\usepackage{fontspec}
+
+%The font has not sensible piece background so should at best be used on a colored board
+
+\DeclareFontFamily{LSB2}{duckchess}{}
+\DeclareFontShape{LSB2}{duckchess}{m}{n}{<-> 
+ "[\directlua{tex.sprint(kpse.find_file("luafont-duckchess-LSB2.lua","misc\space fonts"))}]:mode=node;+liga;original=roboto" }{}
+
+\DeclareFontFamily{LSF}{duckchess}{}
+\DeclareFontShape{LSF}{duckchess}{m}{n}{<-> "
+[\directlua{tex.sprint(kpse.find_file("luafont-duckchess.lua","misc\space fonts"))}]:mode=node;+liga;original=roboto" }{}
+
+
+\usepackage[sfdefault,scale=0.8]{roboto}
+
+\begin{document}
+\setfigfontfamily{duckchess}
+\setchessboard{boardfontfamily=duckchess,boardfontencoding=LSB2,
+ color=white,
+ trimtocolor=white,
+ colorbackboard,
+ color=gray!60,
+ trimtocolor=black,
+ colorbackboard}
+
+\newchessgame
+\mainline{%
+1.d4 Nf6 2.c4 g6 3.Nc3 Bg7 4.e4 d6 5.Nge2 O-O 6.Ng3 c6 7.Be2 a6 8.a4
+a5 9.h4 h5 10.Be3 Na6 11.f3 e5 12.d5 Nd7 13.Nf1 Ndc5 14.Nd2 Qb6
+15.Qb1 Nb4 16.Nb3 Ncd3+ 17.Kd2 Qxe3+}
+
+\raggedright
+\xskakloop[step=6,showlast]{%
+\begin{tabular}{c}
+\chessboard[smallboard,
+setfen=\xskakget{nextfen}]
+\\
+\xskakget{opennr}\xskakget{lan}%
+\end{tabular}\quad}%
+
+\end{document}
+
