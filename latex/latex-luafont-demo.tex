@@ -3,7 +3,9 @@
 % Description: demonstrates the use of a font defined in a lua file
 % the vowels are replaced by rules or lines.
 % The basefont can be set with the key original
-% Requires: latex-font-demo-rule.lua, which defines a font
+% Requires: luafont-demo-rule.lua, which defines a font
+%           luafont-demo-rule-texmf-tex.lua (in texmf/tex)
+%           luafont-demo-rule-texmf-fontmisc.lua (in fonts/misc)          
 % Source/Links:
 % fonts-mkiv.pdf
 % https://www.mail-archive.com/ntg-context@ntg.nl/msg87811.html
@@ -31,14 +33,17 @@
 % This syntax works with files in the texmf tree (in the tex-folder) but triggers
 % luaotfload | db : Reload initiated (formats: otf,ttf,ttc); reason: "File not found:
 % latex-font-demo-rule.".
-% This can be avoided by using the local luaotfload-database.lua (in texmf/tex/luatex)
-% It would be more logical if the lua-files where in fonts (e.g. fonts/misc or fonts/opentype
-% but this seems to need more changes in the luaotfload-files.
+% This can be avoided by using a local luaotfload-database.lua (rename luaotfload-database.luaxxx in texmf/tex/luatex)
 
 \font\testluafont={file:luafont-demo-rule-texmf-tex.lua:mode=node;+liga;original=arial}
 {\testluafont So when we use it we get text ffi}
 
+%% RECOMMENDED!
+% This syntax works with files in fonts/misc and doesn't need a local luaotfload-database.lua
+% It can be transported to fontspec. 
+\font\testluafont=[\directlua{tex.sprint(kpse.find_file("luafont-demo-rule-texmf-fontmisc.lua","misc fonts"))}]:mode=node;+liga;original=texgyretermes
 
+{\testluafont So when we use it we get text ffi}
 
 
 \end{document}

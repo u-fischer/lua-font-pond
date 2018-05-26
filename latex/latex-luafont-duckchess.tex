@@ -2,10 +2,10 @@
 % Date: 22.05.2018
 % Description: use pictures as glyphs for a font
 % open type feature
-% Requires: - latex-font-duckchess.lua
+% Requires: - latex-font-duckchess.lua, should be in a texmf tree in fonts/misc
 %           - duckchess-glyphs.pdf
 %          (both is in the texmf)
-%open question:
+% open question:
 % -how to call the font with fontspec commands.
 %- can one avoid the terminal messages regarding the graphics inclusion
 
@@ -13,14 +13,28 @@
 \usepackage{fontspec}
 \setmainfont{Latin Modern Roman}
 
-\font\duckchessfamily = "file:luafont-duckchess.lua:mode=node;+liga;+tlig;original=latinmodernsans"
+% files in texmf/tex can be loaded like this. 
+% Difficult to do with fontspec. See https://github.com/wspr/fontspec/issues/325
+% Triggers reload of the databas and so slow. 
+%\font\duckchessfamily = "file:luafont-duckchess.lua:mode=node;+liga;+tlig;original=latinmodernsans"
+
+\font\duckchessfont = 
+  [\directlua{tex.sprint(kpse.find_file("luafont-duckchess.lua","misc fonts"))}]:mode=node;+liga;+tlig;original=latinmodernsans
+ 
+  
+\newfontface\duckchessfontface
+{luafont-duckchess.lua}[Path=
+ \directlua{tex.sprint(
+                        luatexbase.registernumber("catcodetable@latex"),
+                        file.pathpart(kpse.find_file("luafont-duckchess.lua","misc fonts")).."/"
+                       )}]      
 \begin{document}
 
 \sffamily
 Some normal text
 
 \begingroup
-\duckchessfamily
+\duckchessfont
 1. Nf3 nf6 2. e4 e5 3. Bb5 lb4 4. Qe2 qe7 5. Rg1 rg7 6. Kf1 kf7
 
 \ExplSyntaxOn
@@ -32,4 +46,10 @@ Some normal text
 }
 \ExplSyntaxOff
 \endgroup
+
+\begingroup
+\duckchessfontface
+1. Nf3 nf6 2. e4 e5 3. Bb5 lb4 4. Qe2 qe7 5. Rg1 rg7 6. Kf1 kf7
+\endgroup
 \end{document}
+
