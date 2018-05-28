@@ -2,7 +2,6 @@
 \input regression-test.tex\relax
 
 \documentclass{article}
-\usepackage{fontspec}
 \begin{document}
 
 \START
