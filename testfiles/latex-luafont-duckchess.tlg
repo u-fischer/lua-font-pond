@@ -1,0 +1,98 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+Completed box being shipped out [1]
+\vbox(633.0+0.0)x407.0, direction TLT
+.\glue 16.0
+.\vbox(617.0+0.0)x345.0, shifted 62.0, direction TLT
+..\vbox(12.0+0.0)x345.0, glue set 12.0fil, direction TLT
+...\glue 0.0 plus 1.0fil
+...\hbox(0.0+0.0)x345.0, direction TLT
+..\glue 25.0
+..\glue(\lineskip) 0.0
+..\vbox(550.0+0.0)x345.0, glue set 539.94232fil, direction TLT
+...\write-{}
+...\glue(\topskip) 3.556
+...\hbox(6.444+1.854)x345.0, glue set 68.91083fil, direction TLT
+....\localpar
+.....\localinterlinepenalty=0
+.....\localbrokenpenalty=0
+.....\localleftbox=null
+.....\localrightbox=null
+....\hbox(0.0+0.0)x15.0, direction TLT
+....\duckchessfont 1
+....\duckchessfont .
+....\glue(\spaceskip) 4.11601 plus 4.63051 minus 0.343
+....\duckchessfont N
+....\duckchessfont f
+....\duckchessfont 3
+....\glue(\spaceskip) 3.087 plus 1.5435 minus 1.029
+....\duckchessfont n
+....\duckchessfont f
+....\duckchessfont 6
+....\glue(\spaceskip) 3.087 plus 1.5435 minus 1.029
+....\duckchessfont 2
+....\duckchessfont .
+....\glue(\spaceskip) 4.11601 plus 4.63051 minus 0.343
+....\duckchessfont e
+....\duckchessfont 4
+....\glue(\spaceskip) 3.087 plus 1.5435 minus 1.029
+....\duckchessfont e
+....\duckchessfont 5
+....\glue(\spaceskip) 3.087 plus 1.5435 minus 1.029
+....\duckchessfont 3
+....\duckchessfont .
+....\glue(\spaceskip) 4.11601 plus 4.63051 minus 0.343
+....\duckchessfont B
+....\duckchessfont b
+....\duckchessfont 5
+....\glue(\spaceskip) 3.087 plus 1.5435 minus 1.029
+....\duckchessfont l
+....\duckchessfont b
+....\duckchessfont 4
+....\glue(\spaceskip) 3.087 plus 1.5435 minus 1.029
+....\duckchessfont 4
+....\duckchessfont .
+....\glue(\spaceskip) 4.11601 plus 4.63051 minus 0.343
+....\duckchessfont Q
+....\duckchessfont e
+....\duckchessfont 2
+....\glue(\spaceskip) 3.087 plus 1.5435 minus 1.029
+....\duckchessfont q
+....\duckchessfont e
+....\duckchessfont 7
+....\glue(\spaceskip) 3.087 plus 1.5435 minus 1.029
+....\duckchessfont 5
+....\duckchessfont .
+....\glue(\spaceskip) 4.11601 plus 4.63051 minus 0.343
+....\duckchessfont R
+....\duckchessfont g
+....\duckchessfont 1
+....\glue(\spaceskip) 3.087 plus 1.5435 minus 1.029
+....\duckchessfont r
+....\duckchessfont g
+....\duckchessfont 7
+....\glue(\spaceskip) 3.087 plus 1.5435 minus 1.029
+....\duckchessfont 6
+....\duckchessfont .
+....\glue(\spaceskip) 4.11601 plus 4.63051 minus 0.343
+....\duckchessfont K
+....\duckchessfont f
+....\duckchessfont 1
+....\glue(\spaceskip) 3.087 plus 1.5435 minus 1.029
+....\duckchessfont k
+....\duckchessfont f
+....\duckchessfont 7
+....\penalty 10000
+....\glue(\parfillskip) 0.0 plus 1.0fil
+....\glue(\rightskip) 0.0
+...\glue -1.854
+...\glue 0.0 plus 1.0fil
+...\glue 0.0
+...\glue 0.0 plus 0.0001fil
+..\glue(\baselineskip) 23.34
+..\hbox(6.66+0.0)x345.0, glue set 170.0fil, direction TLT
+...\glue 0.0 plus 1.0fil
+...\TU/lmr/m/n/10 1
+...\glue 0.0 plus 1.0fil
+<../duckchess-glyphs.pdf><../duckchess-glyphs.pdf><../duckchess-glyphs.pdf><../duckchess-glyphs.pdf><../duckchess-glyphs.pdf><../duckchess-glyphs.pdf><../duckchess-glyphs.pdf><../duckchess-glyphs.pdf><../duckchess-glyphs.pdf><../duckchess-glyphs.pdf>
+(latex-luafont-duckchess.aux)
