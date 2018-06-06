@@ -2,14 +2,14 @@
 % Date: 26.06.2018
 % Test luafont-duckchess
 \input regression-test.tex\relax
-
+\START
 \documentclass{article}
 
 \font\duckchessfont =
   [\directlua{tex.sprint(kpse.find_file("luafont-duckchess.lua","misc fonts"))}]:mode=node;+liga;+tlig;original=latinmodernsans
 
 \begin{document}
-\START
+
 \showoutput
 \duckchessfont
 1. Nf3 nf6 2. e4 e5 3. Bb5 lb4 4. Qe2 qe7 5. Rg1 rg7 6. Kf1 kf7
