@@ -6,7 +6,7 @@ build/
 *.prj.bak
 junk/
 texmf/ls-R         
-
+*.zip
 
 ## Core latex/pdflatex auxiliary files:
 *.aux

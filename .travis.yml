@@ -7,12 +7,17 @@ branches:
 sudo: required
 services: docker
 
-env:
-  - TEXMFHOME=${TRAVIS_BUILD_DIR}/texmf
+install:
+ - source texlive.sh
 
-script: |
-  docker run \
-  -e diffexe=diff --env TEXMFHOME \
-  -v ${TRAVIS_BUILD_DIR}:/travis -w /travis \
-  -it texlive/texlive sh -c \
-  "tlmgr install fontspec graphics l3build latex latex-bin luaotfload luatex microtype opensans && l3build check -q -H"
+env:
+- TEXMFHOME=${TRAVIS_BUILD_DIR}/texmf
+
+cache:
+  directories:
+    - /tmp/texlive
+    - $HOME/.texlive
+
+
+script: 
+ - l3build.lua check -q -H
