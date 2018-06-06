@@ -20,4 +20,4 @@ cache:
 
 
 script: 
- - l3build.lua check -q -H
+ - l3build check -q -H
