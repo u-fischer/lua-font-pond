@@ -2,7 +2,7 @@
 % Date: 11.05.2018
 % Description: adds "Letters=Uppercase" to a font which hasn't this
 % open type feature
-% Requires: external support/font-pont-lower-uppercase.lua, which gives a table of
+% Requires: luafontpond-lower-uppercase.lua (in the texmf), which gives a table of
 % lowercase - uppercase pairs.
 % Source/Links:
 % https://tex.stackexchange.com/questions/370799/fill-a-lua-table-with-lowercase-uppercase-pairs
@@ -10,7 +10,7 @@
 \documentclass{article}
 \directlua
 {
-  local lowertouppercase = require "../resources/fontpond-lower-uppercase"
+  local lowertouppercase = require "luafontpond-lower-uppercase"
   lowertouppercase["ß"] = {"S","S"}
 
   fonts.handlers.otf.addfeature
@@ -23,7 +23,8 @@
 
 \usepackage{fontspec}
 
-\setmainfont{OpenSans-Regular.ttf}%
+%\setmainfont{OpenSans-Regular.ttf}%
+\setmainfont{TeX Gyre Termes}%
 
 \usepackage{microtype}
 \begin{document}
@@ -38,7 +39,7 @@ It works for all chars and scripts in the font: αυτό είναι ελληνι
 It is possible to fine tune the uppercase (here SS for ß instead of an uppercase ß).
 
 \addfontfeature{RawFeature=+vircase}
-Grüße an die Welt! VA
+Grüße an die Welt! Test Kerning: va VA v\hbox{}A 
 
 The code adds a feature to a font which will set everything in uppercase.
 
