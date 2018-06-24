@@ -7,8 +7,9 @@
 \documentclass{article}
 
 \START
+%better use a unique name as original to avoid problems with travis
 \font\duckchessfont =
-  [\directlua{tex.sprint(kpse.find_file("luafont-duckchess.lua","misc fonts"))}]:mode=node;+liga;+tlig;original=latinmodernsans
+  [\directlua{tex.sprint(kpse.find_file("luafont-duckchess.lua","misc fonts"))}]:mode=node;+liga;+tlig;original=lmsans10regular
 
 \begin{document}
 \showoutput
