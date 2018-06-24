@@ -11,7 +11,6 @@
   [\directlua{tex.sprint(kpse.find_file("luafont-duckchess.lua","misc fonts"))}]:mode=node;+liga;+tlig;original=latinmodernsans
 
 \begin{document}
-\directlua{tex.sprint(kpse.find_file("luafont-duckchess.lua","misc fonts"))}
 \showoutput
 \duckchessfont
 1. Nf3 nf6 2. e4 e5 3. Bb5 lb4 4. Qe2 qe7 5. Rg1 rg7 6. Kf1 kf7
