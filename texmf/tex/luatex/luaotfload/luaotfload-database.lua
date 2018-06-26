@@ -622,57 +622,8 @@ local style_category = {
 
 local type1_metrics = { "tfm", "ofm", }
 
--- MK Moved to the top
-local path_normalize
-do
-    --- os.type and os.name are constants so we
-    --- choose a normalization function in advance
-    --- instead of testing with every call
-    local os_type, os_name = os.type, os.name
-    local filecollapsepath = filecollapsepath
-    local lfsreadlink      = lfs.readlink
-
-    --- windows and dos
-    if os_type == "windows" or os_type == "msdos" then
-        --- ms platfom specific stuff
-        path_normalize = function (path, exists)
-            path = stringgsub(path, '\\', '/')
-            path = stringlower(path)
-            path = filecollapsepath(path)
-            return path
-        end
---[[doc--
-    The special treatment for cygwin was removed with a patch submitted
-    by Ken Brown.
-    Reference: http://cygwin.com/ml/cygwin/2013-05/msg00006.html
---doc]]--
-
-    else -- posix
-        path_normalize = function (path, exists)
-            if exists then
-                local dest = lfsreadlink(path)
-                if dest then
-                    if kpsereadable_file(dest) then
-                        path = dest
-                    elseif kpsereadable_file(filejoin(filedirname(path), dest)) then
-                        path = filejoin(file.dirname(path), dest)
-                    else
-                        -- broken symlink?
-                    end
-                end
-            end
-            path = filecollapsepath(path)
-            return path
-        end
-    end
-end
--- /MK
-
 local lookup_filename = function (filename)
     if not name_index then name_index = load_names () end
-    -- MK Added normalization during lookup
-    filename = path_normalize(filename, false)
-    -- /MK
     local files    = name_index.files
     local basedata = files.base
     local baredata = files.bare
@@ -682,7 +633,10 @@ local lookup_filename = function (filename)
         local barenames = baredata [location]
         local idx
         if basenames ~= nil then
+            -- MK Added fallback
             idx = basenames [filename]
+               or basenames [stringlower(filename)]
+            -- /MK
             if idx then
                 goto done
             end
@@ -692,7 +646,10 @@ local lookup_filename = function (filename)
                 local format  = format_precedence [j]
                 local filemap = barenames [format]
                 if filemap then
+                    -- MK Added fallback
                     idx = barenames [format] [filename]
+                       or barenames [format] [stringlower(filename)]
+                    -- /MK
                     if idx then
                         break
                     end
@@ -1252,9 +1209,6 @@ end
 
 lookup_fullpath = function (fontname, ext) --- getfilename()
     if not name_index then name_index = load_names () end
-    -- MK Added normalization during lookup
-    fontname = path_normalize(fontname, false)
-    -- /MK
     local files = name_index.files
     local basedata = files.base
     local baredata = files.bare
@@ -1949,6 +1903,48 @@ local read_font_names = function (fullname,
                             info)
 end
 
+local path_normalize
+do
+    --- os.type and os.name are constants so we
+    --- choose a normalization function in advance
+    --- instead of testing with every call
+    local os_type, os_name = os.type, os.name
+    local filecollapsepath = filecollapsepath
+    local lfsreadlink      = lfs.readlink
+
+    --- windows and dos
+    if os_type == "windows" or os_type == "msdos" then
+        --- ms platfom specific stuff
+        path_normalize = function (path)
+            path = stringgsub(path, '\\', '/')
+            path = stringlower(path)
+            path = filecollapsepath(path)
+            return path
+        end
+--[[doc--
+    The special treatment for cygwin was removed with a patch submitted
+    by Ken Brown.
+    Reference: http://cygwin.com/ml/cygwin/2013-05/msg00006.html
+--doc]]--
+
+    else -- posix
+        path_normalize = function (path)
+            local dest = lfsreadlink(path)
+            if dest then
+                if kpsereadable_file(dest) then
+                    path = dest
+                elseif kpsereadable_file(filejoin(filedirname(path), dest)) then
+                    path = filejoin(file.dirname(path), dest)
+                else
+                    -- broken symlink?
+                end
+            end
+            path = filecollapsepath(path)
+            return path
+        end
+    end
+end
+
 local blacklist = { }
 local p_blacklist --- prefixes of dirs
 
@@ -2276,7 +2272,7 @@ local collect_font_filenames_dir = function (dirname, location)
                nfound, dirname)
     for j = 1, nfound do
         local fullname = found[j]
-        files[#files + 1] = { path_normalize (fullname, true), location }
+        files[#files + 1] = { path_normalize (fullname), location }
     end
     return files
 end
@@ -2288,10 +2284,10 @@ local filter_out_pwd = function (dirs)
         stripslashes = luaotfload.parsers and luaotfload.parsers.stripslashes
     end
     local pwd = path_normalize (lpegmatch (stripslashes,
-                                           lfscurrentdir ()), true)
+                                           lfscurrentdir ()))
     for i = 1, #dirs do
         --- better safe than sorry
-        local dir = path_normalize (lpegmatch (stripslashes, dirs[i]), true)
+        local dir = path_normalize (lpegmatch (stripslashes, dirs[i]))
         if dir == "." or dir == pwd then
             logreport ("both", 3, "db",
                        "Path “%s” matches $PWD (“%s”), skipping.",
@@ -2580,6 +2576,7 @@ generate_filedata = function (mappings)
 
         local inbase = base [location] --- no format since the suffix is known
 
+        -- MK Added lowercase versions for case-insensitive fallback
         if inbase then
             local present = inbase [basename]
             if present then
@@ -2599,11 +2596,38 @@ generate_filedata = function (mappings)
                 end
 
             else
+                local lowerbasename = stringlower (basename)
+                if basename ~= lowerbasename then
+                    present = inbase [lowerbasename]
+                    if present then
+                        logreport ("both", 4, "db",
+                                   "Conflicting basename: %q already indexed \z
+                                    as %s.",
+                                   barename, mappings[present].basename)
+                        conflicts.basenames = conflicts.basenames + 1
+
+                        --- track conflicts per font
+                        local conflictdata = entry.conflicts
+
+                        if not conflictdata then
+                            entry.conflicts = { basename = present }
+                        else -- some conflicts already detected
+                            conflictdata.basename = present
+                        end
+
+                    else
+                        inbase [lowerbasename] = index
+                    end
+                end
                 inbase [basename] = index
             end
         else
             inbase = { basename = index }
             base [location] = inbase
+            local lowerbasename = stringlower (basename)
+            if basename ~= lowerbasename then
+                inbase [lowerbasename] = index
+            end
         end
 
         --- 2) add to barename table
@@ -2627,14 +2651,40 @@ generate_filedata = function (mappings)
                 else -- some conflicts already detected
                     conflictdata.barename = present
                 end
-
             else
+                local lowerbarename = stringlower (barename)
+                if barename ~= lowerbarename then
+                    present = inbare [lowerbarename]
+                    if present then
+                        logreport ("both", 4, "db",
+                                   "Conflicting barename: %q already indexed \z
+                                    as %s.",
+                                   barename, mappings[present].basename)
+                        conflicts.barenames = conflicts.barenames + 1
+
+                        --- track conflicts per font
+                        local conflictdata = entry.conflicts
+
+                        if not conflictdata then
+                            entry.conflicts = { barename = present }
+                        else -- some conflicts already detected
+                            conflictdata.barename = present
+                        end
+                    else
+                        inbare [lowerbarename] = index
+                    end
+                end
                 inbare [barename] = index
             end
         else
             inbare = { [barename] = index }
             bare [location] [format] = inbare
+            local lowerbarename = stringlower (barename)
+            if barename ~= lowerbarename then
+                inbare [lowerbarename] = index
+            end
         end
+        -- /MK
 
         --- 3) add to fullpath map
 
@@ -3693,7 +3743,10 @@ return {
         fonts.definers  = fonts.definers or { resolvers = { } }
 
         names.blacklist = blacklist
-        names.version   = 5        --- increase monotonically
+        -- MK Changed to rebuild with case insensitive fallback.
+        --    Negative version to indicate generation by modified code.
+        names.version   = -1       --- decrease monotonically
+        -- /MK
         names.data      = nil      --- contains the loaded database
         names.lookups   = nil      --- contains the lookup cache
 
