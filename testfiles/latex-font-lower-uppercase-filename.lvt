@@ -10,7 +10,7 @@
 \font\testb={file:firamono-regular.otf}
 
 \START\showoutput
-\testa blbl
+\testa BlbL
 \testb blbl
 
 \end{document}
