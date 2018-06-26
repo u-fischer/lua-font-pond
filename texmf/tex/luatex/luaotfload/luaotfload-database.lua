@@ -1217,12 +1217,18 @@ lookup_fullpath = function (fontname, ext) --- getfilename()
         local basenames = basedata [location]
         local idx
         if basenames ~= nil then
+            -- MK Added fallback
             idx = basenames [fontname]
+               or basenames [stringlower(fontname)]
+            -- /MK
         end
         if ext then
             local barenames = baredata [location] [ext]
             if not idx and barenames ~= nil then
+                -- MK Added fallback
                 idx = barenames [fontname]
+                   or barenames [stringlower(fontname)]
+                -- /MK
             end
         end
         if idx then
