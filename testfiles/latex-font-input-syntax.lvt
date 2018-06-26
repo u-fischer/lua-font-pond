@@ -6,33 +6,31 @@
 \documentclass{article}
 \begin{document}
 
-\font\testa=file:lmroman10-regular:-liga;           at 12pt 
-\font\testb=file:lmroman12-regular:+liga;           at 24pt 
-\font\testc=file:lmroman12-regular:mode=node;+liga; at 24pt 
-\font\testd=name:lmroman10bold                      at 12pt 
-\font\teste=[lmroman12-regular]:+liga at 30pt 
-\font\testf=[lmroman12-regular]       at 40pt 
+\font\testa=file:lmroman10-regular:-liga;           at 12pt
+\font\testb=file:lmroman12-regular:+liga;           at 24pt
+\font\testc=file:lmroman12-regular:mode=node;+liga; at 24pt
+\font\testd=name:lmroman10bold                      at 12pt
+\font\teste=[lmroman12-regular]:+liga at 30pt
+\font\testf=[lmroman12-regular]       at 40pt
 
 \testa a \testb a \testc a \testd a \teste a \testf a
 
 \START \showoutput
 \testa afi \testb afi \testc afi \testd afi \teste afi \testf afi
 
-\TIMO
+\OMIT
 \protrudechars 2 \relax
 \adjustspacing  2 \relax
 
-\font\testg=file:lmroman12-regular:+liga;extend=1.5         at 12pt 
-\font\testh=file:lmroman12-regular:+liga;slant=0.8          at 12pt 
-\font\testf=file:lmroman12-regular:+liga;protrusion=default at 12pt 
+\font\testg=file:lmroman12-regular:+liga;extend=1.5         at 12pt
+\font\testh=file:lmroman12-regular:+liga;slant=0.8          at 12pt
+\font\testf=file:lmroman12-regular:+liga;protrusion=default at 12pt
 
 \testg afi \testh afi \testf afi
 
-\OMIT
+\TIMO
 \testg some text
-\testh some text 
+\testh some text
 \testf some text
 
-\vfill\break
-\END
 \end{document}
