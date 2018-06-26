@@ -7,6 +7,8 @@ build/
 junk/
 texmf/ls-R         
 *.zip
+## will perhaps to be removed later. But currently no pdf are relevant here
+testfiles/*.pdf
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
