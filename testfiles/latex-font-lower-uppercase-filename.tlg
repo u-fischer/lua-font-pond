@@ -11,8 +11,8 @@ Completed box being shipped out [1]
 ..\glue(\lineskip) 0.0
 ..\vbox(550.0+0.0)x345.0, glue set 539.94232fil, direction TLT
 ...\write-{}
-...\glue(\topskip) 2.57
-...\hbox(7.43+0.11)x345.0, glue set 310.6fil, direction TLT
+...\glue(\topskip) 2.51
+...\hbox(7.49+0.11)x345.0, glue set 283.81fil, direction TLT
 ....\localpar
 .....\localinterlinepenalty=0
 .....\localbrokenpenalty=0
@@ -23,6 +23,11 @@ Completed box being shipped out [1]
 ....\testa l
 ....\testa b
 ....\testa L
+....\glue(\spaceskip) 2.79 plus 1.3936 minus 0.93092
+....\testb b
+....\testb l
+....\testb b
+....\testb l
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0

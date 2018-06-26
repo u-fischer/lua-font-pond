@@ -7,10 +7,10 @@
 \begin{document}
 \font\testa={file:FiraSans-Light.otf}
 
-%\font\testb={file:firamono-regular.otf} %fails on linux
+\font\testb={file:firamono-regular.otf}
 
 \START\showoutput
 \testa BlbL
-%\testb blbl
+\testb blbl
 
 \end{document}
