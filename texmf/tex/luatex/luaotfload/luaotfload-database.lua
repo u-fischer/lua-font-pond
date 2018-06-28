@@ -620,7 +620,9 @@ local style_category = {
     i           = "italic",
 }
 
-local type1_metrics = { "tfm", "ofm", }
+-- MK Determine if casefold search is requested
+local casefold_search = not ({['0'] = true, ['f'] = true, [''] = true})[kpse.var_value'texmf_casefold_search':sub(1,1)]
+-- /MK
 
 local lookup_filename = function (filename)
     if not name_index then name_index = load_names () end
@@ -635,7 +637,7 @@ local lookup_filename = function (filename)
         if basenames ~= nil then
             -- MK Added fallback
             idx = basenames [filename]
-               or basenames [stringlower(filename)]
+               or casefold_search and basenames [stringlower(filename)]
             -- /MK
             if idx then
                 goto done
@@ -648,7 +650,7 @@ local lookup_filename = function (filename)
                 if filemap then
                     -- MK Added fallback
                     idx = barenames [format] [filename]
-                       or barenames [format] [stringlower(filename)]
+                       or casefold_search and barenames [format] [stringlower(filename)]
                     -- /MK
                     if idx then
                         break
@@ -677,6 +679,12 @@ local dummy_findfile = resolvers.findfile -- from basics-gen
 
 --- string -> string * string * bool
 local lookup_font_file
+
+-- MK Added mini scope to avoid variable limit
+do
+local type1_metrics = { "tfm", "ofm", }
+-- /MK
+
 lookup_font_file = function (filename)
     local found = lookup_filename (filename)
 
@@ -702,6 +710,9 @@ lookup_font_file = function (filename)
     end
     return filename, nil, false
 end
+-- MK
+end
+-- /MK
 
 --[[doc--
 
@@ -1219,7 +1230,7 @@ lookup_fullpath = function (fontname, ext) --- getfilename()
         if basenames ~= nil then
             -- MK Added fallback
             idx = basenames [fontname]
-               or basenames [stringlower(fontname)]
+               or casefold_search and basenames [stringlower(fontname)]
             -- /MK
         end
         if ext then
@@ -1227,7 +1238,7 @@ lookup_fullpath = function (fontname, ext) --- getfilename()
             if not idx and barenames ~= nil then
                 -- MK Added fallback
                 idx = barenames [fontname]
-                   or barenames [stringlower(fontname)]
+                   or casefold_search and barenames [stringlower(fontname)]
                 -- /MK
             end
         end
