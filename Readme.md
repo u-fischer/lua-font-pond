@@ -19,8 +19,9 @@ Currently the following folders for the various formats exists
 - context
 - plain: plaintex examples that load luaotfload.sty
 - generic: for everything that doesn't fit in the folders above
-- resources:  for code that is perhaps useful across formats
-- testfiles/testfiles-plain: these folders contain a few testfiles for the l3build system.
+- texmf: resources like fontloaders and patches to luaotfload.
+- resources:  for code that is perhaps useful across formats but should not go in the texmf
+- testfiles: these folders contain a few testfiles for the l3build system.
 
 Every example is accompaigned by the resulting pdf. 
 
