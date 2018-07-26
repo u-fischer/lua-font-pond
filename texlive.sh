@@ -40,7 +40,7 @@ tlmgr install   \
   filehook      \
   xcolor        \
   unicode-math  \
-  lm-math xits
+  lm-math xits babel babel-english
  
 # Assuming a 'basic' font set up, metafont is required to avoid
 # warnings with some packages and errors with others
