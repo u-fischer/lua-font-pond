@@ -27,7 +27,7 @@ tlmgr install fontspec graphics l3build latex latex-bin luaotfload luatex microt
 # TeX90 plain for unpacking, pdfLaTeX, LuaLaTeX and XeTeX for tests
 tlmgr install cm etex knuth-lib latex-bin tex tex-ini-files unicode-data 
 
-tlmgr install  sourcecodepro Asana-Math    ebgaramond  tex-gyre      
+tlmgr install  sourcecodepro Asana-Math    ebgaramond  tex-gyre  amsfonts    
 
 tlmgr install  tex-gyre-math   geometry  graphics-def   ifluatex      
 
