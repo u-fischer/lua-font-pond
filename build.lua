@@ -3,7 +3,7 @@ module="lua-font-pond"
 
 stdengine    = "luatex"
 checkengines = {"luatex"}
-checkconfigs = {"build","config-plain","config-fontspec","config-unicode-math"}
+checkconfigs = {"build","config-unicode-math","config-plain","config-fontspec"}
 
 testsuppdir =  "./resources" -- test files should also use resources
 
