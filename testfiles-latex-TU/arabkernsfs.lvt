@@ -29,6 +29,7 @@ luatexbase.add_to_callback("pre_linebreak_filter", test, "test")
 luatexbase.add_to_callback("hpack_filter", test, "test")
 }
 
+
 \begin{document}
 \textdir TRT \pardir TRT \bodydir TRT \pagedir TRT
 
@@ -38,7 +39,8 @@ luatexbase.add_to_callback("hpack_filter", test, "test")
 
 \hbox{الإشارات برهن}
 
-\halign{#\cr الإشارات برهن\cr}
+\halign{#\cr{\textdir TRT الإشارات برهن}\cr}
 
+\halign{#\cr الإشارات برهن\cr}
 \OMIT
 \end{document}
