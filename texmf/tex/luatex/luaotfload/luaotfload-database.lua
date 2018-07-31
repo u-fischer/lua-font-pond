@@ -621,7 +621,9 @@ local style_category = {
 }
 
 -- MK Determine if casefold search is requested
-local casefold_search = not ({['0'] = true, ['f'] = true, [''] = true})[kpse.var_value'texmf_casefold_search':sub(1,1)]
+local casefold_search =
+    not ({['0'] = true, ['f'] = true, [''] = true})
+        [(kpse.var_value'texmf_casefold_search' or '1'):sub(1,1)]
 -- /MK
 
 local lookup_filename = function (filename)
