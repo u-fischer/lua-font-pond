@@ -656,8 +656,8 @@ local init_post_install_callbacks = function ()
 
   -- MK Pass current text direction to simple_font_handler
   local handler = nodes.simple_font_handler
-  local callback = function(head, groupcode)
-    return handler(head, groupcode, nil, nil, tex.get'textdir')
+  local callback = function(head, groupcode, _, _, direction)
+    return handler(head, groupcode, nil, nil, direction or tex.get'textdir')
   end
   luatexbase.add_to_callback("pre_linebreak_filter",
                              callback,
