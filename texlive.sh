@@ -34,6 +34,8 @@ tlmgr install  tex-gyre-math   geometry  graphics-def   ifluatex
 tlmgr install  ifxetex   ucharcat  filehook   xcolor   unicode-math etoolbox amsmath
 
 tlmgr install  lm  lm-math xits babel babel-english oberdiek junicode lualatex-math amiri arabluatex
+
+tlmgr install xkeyval xstring unicode-data luacode environ adjustbox collectbox ms pgf ifoddpage varwidth
  
 # Assuming a 'basic' font set up, metafont is required to avoid
 # warnings with some packages and errors with others
