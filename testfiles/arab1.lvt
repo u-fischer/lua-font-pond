@@ -10,7 +10,7 @@
 % luaotfload.
 
 \input regression-test.tex\relax
-\START
+
 \documentclass{article}
 
 \pagestyle{empty}
@@ -48,7 +48,7 @@ luatexbase.add_to_callback("hpack_filter", test, "test")
 
 
 \begin{document}
-%\START
+\START
 
 \begin{arab}
   \uc{^g}u.hA wa-.himAru-hu
