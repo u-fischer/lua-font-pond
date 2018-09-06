@@ -36,6 +36,8 @@ tlmgr install  ifxetex   ucharcat  filehook   xcolor   unicode-math etoolbox ams
 tlmgr install  lm  lm-math xits babel babel-english oberdiek junicode lualatex-math amiri arabluatex
 
 tlmgr install xkeyval xstring unicode-data luacode environ adjustbox collectbox ms pgf ifoddpage varwidth
+
+tlmgr install luatexbase
  
 # Assuming a 'basic' font set up, metafont is required to avoid
 # warnings with some packages and errors with others
