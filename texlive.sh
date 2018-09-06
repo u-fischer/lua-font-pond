@@ -37,7 +37,7 @@ tlmgr install  lm  lm-math xits babel babel-english oberdiek junicode lualatex-m
 
 tlmgr install xkeyval xstring unicode-data luacode environ adjustbox collectbox ms pgf ifoddpage varwidth
 
-tlmgr install luatexbase
+tlmgr install luatexbase ctablestack
  
 # Assuming a 'basic' font set up, metafont is required to avoid
 # warnings with some packages and errors with others
