@@ -1,9 +1,0 @@
-\input{regression-test.tex}
-
-\documentclass{article}
-\PassOptionsToPackage{check-declarations}{expl3}
-
-\begin{document}\showoutput
-\START
-hello
-\end{document}
