@@ -19,7 +19,7 @@ Currently the following folders for the various formats exists
 - context
 - plain: plaintex examples that load luaotfload.sty
 - generic: for everything that doesn't fit in the folders above
-- texmf: resources like fontloaders and patches to luaotfload.
+- texmf: resources which should be found via kpathsea.
 - resources:  for code that is perhaps useful across formats but should not go in the texmf
 - testfiles: these folders contain a few testfiles for the l3build system.
 
@@ -52,8 +52,10 @@ Themes for which I would like to get good examples are e.g.
 
 ## Fontloader
 
-I  normally use rather new versions of the fontloader. See <https://ctan.org/pkg/fontloader-luaotfload>
-for informations. It is possible that some examples don't work with older fontloaders.
+In general the current luaotfload version should be used. 
+Some examples have been made/tested with an older luaotfload and in part with experimental fontloaders. 
+If something no longer works, please add an issue.
+
 
  
 
