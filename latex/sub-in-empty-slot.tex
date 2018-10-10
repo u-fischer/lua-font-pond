@@ -1,0 +1,25 @@
+% !Mode:: "TeX:DE:UTF-8:Main"
+% 10.10.2018
+% demonstrates how to move/substitute chars if the receiving slot was empty
+% the important bit is "nocheck=true"
+% https://www.mail-archive.com/ntg-context@ntg.nl/msg89321.html
+\documentclass{article}
+\usepackage{luacode}
+\begin{luacode}
+  fonts.handlers.otf.addfeature {
+    name = "phone",
+    type = "substitution",
+    nocheck=true, -- important, forces sub to "empty" slot
+--  data      = { [0x260E] = 0xF002E }, -- works too
+    data      = { [0x260E] = "Mobilefone" },
+  }
+
+\end{luacode}
+\begin{document}
+\font\test={name:marvosym:mode=node;}
+Test {\test ^^^^260e}
+
+\font\test={name:marvosym:mode=node;+phone;}
+Test {\test ^^^^260e}
+
+\end{document}
